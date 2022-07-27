@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <homeComp v-if="!$store.state.isOpen"></homeComp>
-    <recipecomp v-if="$store.state.isOpen"> </recipecomp>
+    <!-- <homeComp v-if="!$store.state.isOpen"></homeComp>
+    <recipecomp v-if="$store.state.isOpen"> </recipecomp> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import homeComp from "@/views/homeComp.vue";
-import recipecomp from "./views/recipeComp.vue"
+// import homeComp from "./views/homeComp.vue";
+// import recipecomp from "./views/recipeComp.vue"
 export default {
   name: "App",
   components: {
-    homeComp,
-    recipecomp
-    
+    // homeComp,
+    // recipecomp
   },
 };
 </script>

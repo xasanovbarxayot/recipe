@@ -11,8 +11,8 @@
         >
           <h2>{{ recipe.title }}</h2>
           <p>{{ recipe.description }}</p>
-          <router-link >
-            <button @click="$store.state.isOpen=true">View recipe</button>
+          <router-link :to="`/recipe/${recipe.slug}`">
+            <button @click="$store.state.isOpen = true">View recipe</button>
           </router-link>
         </div>
       </div>
@@ -69,10 +69,14 @@
 export default {
   data() {
     return {
-      recipe: 
-        { slug: "", title: "", description: "", ingredients: [], method: [] },
-        ingredient:''
-      
+      recipe: {
+        slug: "",
+        title: "",
+        description: "",
+        ingredients: [],
+        method: [],
+      },
+      ingredient: "",
     };
   },
   methods: {
@@ -84,13 +88,12 @@ export default {
     },
 
     addNewRecipe() {
-      
       console.log(this.recipe);
       if (this.recipe.title == "") {
         alert("Avval ");
         return;
       }
-      this.$store.commit('ADD_Recipe',this.recipe)
+      this.$store.commit("ADD_Recipe", this.recipe);
     },
   },
 };

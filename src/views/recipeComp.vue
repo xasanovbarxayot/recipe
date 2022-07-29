@@ -1,8 +1,8 @@
 <template>
   <div class="recipe">
-    <router-link @click="$store.state.isOpen = false"> &lt; Back </router-link>
+    <router-link to="/" @click="$store.state.isOpen = false"> &lt; Back </router-link>
     <h1>{{ recipe.title }}</h1>
-    <p class="desc">{{ recipe[0] }}</p>
+    <p class="desc">{{ recipe}}</p>
     <hr />
     <div class="ingredients">
       <h3>Ingredients</h3>

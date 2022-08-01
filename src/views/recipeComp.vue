@@ -2,39 +2,48 @@
   <div class="recipe">
     <router-link to="/" @click="$store.state.isOpen = false"> &lt; Back </router-link>
     <h1>{{ recipe.title }}</h1>
-    <p class="desc">{{ recipe}}</p>
     <hr />
     <div class="ingredients">
       <h3>Ingredients</h3>
+      <br>
+      {{ currentItem }}
       <ul>
-        <!-- <li v-for="(ingredient, i) in recipe.ingredients" :key="i">
-          {{ ingredient }}
-        </li> -->
+        <li v-for="(ingredient, i) in recipe.ingredients" :key="i">
+          {{ ingredient.ingredients }}
+        </li>
       </ul>
     </div>
     <div class="method">
       <h3>Method</h3>
       <ol>
-        <!-- <li v-for="(step, j) in recipe.method" :key="j">
+        <li v-for="(step, j) in recipe.method" :key="j">
           {{ step }}
-        </li> -->
+        </li>
       </ol>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex"
 export default {
   computed: {
     recipe() {
-      console.log(this.$route.params.slug);
-      //   return this.$store.state.recipes
       let recipes = this.$store.state.recipes.filter(
         (recipe) => recipe.slug == this.$route.params.slug
       );
       return recipes;
     },
+    ...mapState(['currentItem'])
   },
+  methods:{
+    ...mapMutations(['SET_CURRENT'])
+  },
+  mounted(){
+    let slug = this.$route.params.slug
+    this.SET_CURRENT(slug)
+  }
+  
 };
 </script>
 

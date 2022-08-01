@@ -46,6 +46,7 @@ export default new Vuex.Store({
                 ],
             },
         ],
+        currentItem: {},
     },
     getters: {},
     mutations: {
@@ -60,6 +61,10 @@ export default new Vuex.Store({
         },
         ADD_NEW_STEP(state) {
             state.methodsRows++;
+        },
+        SET_CURRENT(state, slug) {
+            state.currentItem =
+                state.recipes.filter((el) => el.slug == slug)[0] || {};
         },
     },
     actions: {},
